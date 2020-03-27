@@ -46,11 +46,38 @@
 
         let userInput;
         let computerGuess;
+        let result;
+        let playerWins = 0;
+        let compWins = 0;
 
         for(let i = 0; i < 5; i++) {
+
             userInput = prompt("Please enter rock, paper, or scissors");
             computerGuess = computerPlay();
-            console.log(playRound(userInput, computerGuess));
+
+            console.log("Your choice: " + userInput.toLowerCase());
+            console.log("Computer choice: " + computerGuess);
+
+            result = playRound(userInput, computerGuess)
+            console.log(result);
+
+            if(result.includes("You win!")) {
+                playerWins++;
+            }
+            if(result.includes("You lose!")) {
+                compWins++;
+            }
+            
+        }
+
+        if(playerWins > compWins) {
+            console.log("You win the game! Great playing.");
+        }
+        else if(playerWins == compWins) {
+            console.log("It's a tied game. Good match!");
+        }
+        else {
+            console.log("Computer wins the game. Wanna go again?");
         }
     }
 
